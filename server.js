@@ -12,5 +12,3 @@ app.use('/api/users', usersRouter);
 app.use('/api/todos', todosRouter);
 
 app.listen(PORT, () => console.log('Listening'));
-
-// CLOSE YOUR DATABASE

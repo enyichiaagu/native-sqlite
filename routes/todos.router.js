@@ -9,11 +9,11 @@ import {
   deleteTodo,
 } from '../data/queries.js';
 
-// For the purpose of illustration, no real login implementation will be used
+// No real login implementation will be used, this is only for the purpose of illustration
 
 const todosRouter = express.Router();
 
-const defaultUserId = 'USER ID STRING';
+const defaultUserId = 'CHANGE TO USER ID STRING';
 
 // Create a todo as a user
 todosRouter.post('/', (req, res) => {
@@ -72,9 +72,12 @@ todosRouter.patch('/:id', (req, res) => {
       .json({ error: 'User unauthorized to update this todo' });
   }
 
+  const checkedAt = Date.now();
+
   const updatedCheck = checked ? 1 : 0;
-  const { todo_id, title, created_at } = updateTodoCheckById.get(
+  const { todo_id, title, checked_at, created_at } = updateTodoCheckById.get(
     updatedCheck,
+    checkedAt,
     recordedTodo.todo_owner,
     todoId
   );
@@ -85,6 +88,7 @@ todosRouter.patch('/:id', (req, res) => {
       todoId: todo_id,
       title,
       check: Boolean(updatedCheck),
+      checkedAt: new Date(checked_at).toISOString(),
       createdAt: new Date(created_at).toISOString(),
     },
   });

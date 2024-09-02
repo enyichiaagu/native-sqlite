@@ -29,8 +29,8 @@ const getTodoById = database.prepare(`
 `);
 
 const updateTodoCheckById = database.prepare(`
-  UPDATE todos SET checked = ? WHERE todo_owner = ? AND todo_id = ? 
-  RETURNING todo_id, title, created_at
+  UPDATE todos SET checked = ?, checked_at = ? WHERE todo_owner = ? AND todo_id = ? 
+  RETURNING todo_id, title, checked_at, created_at
 `);
 
 const deleteTodo = database.prepare(`
