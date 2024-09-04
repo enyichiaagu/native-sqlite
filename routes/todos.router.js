@@ -13,7 +13,7 @@ import {
 
 const todosRouter = express.Router();
 
-const defaultUserId = 'CHANGE TO USER ID STRING';
+const defaultUserId = 'CHANGE TO VALID USER ID STRING';
 
 // Create a todo as a user
 todosRouter.post('/', (req, res) => {
