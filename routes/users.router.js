@@ -33,6 +33,7 @@ usersRouter.post('/', async (req, res) => {
   });
 });
 
+// No real login implementation will be used, this is only for the purpose of illustration
 usersRouter.post('/session', async (req, res) => {
   const { username, password } = req.body;
 

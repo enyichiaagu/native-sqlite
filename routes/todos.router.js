@@ -9,10 +9,9 @@ import {
   deleteTodo,
 } from '../data/queries.js';
 
-// No real login implementation will be used, this is only for the purpose of illustration
-
 const todosRouter = express.Router();
 
+// Use this to simulate a logged in user
 const defaultUserId = 'CHANGE TO VALID USER ID STRING';
 
 // Create a todo as a user
@@ -33,7 +32,7 @@ todosRouter.post('/', (req, res) => {
     todoId,
     title,
     checked: Boolean(addedTodo.checked),
-    joined: new Date(addedTodo.created_at).toISOString(),
+    createdAt: new Date(addedTodo.created_at).toISOString(),
   });
 });
 
@@ -83,7 +82,7 @@ todosRouter.patch('/:id', (req, res) => {
   );
 
   return res.status(200).json({
-    message: 'Successfully updated Todo',
+    message: 'Successfully checked todo',
     update: {
       todoId: todo_id,
       title,
@@ -94,6 +93,7 @@ todosRouter.patch('/:id', (req, res) => {
   });
 });
 
+// Delete a todo by ID
 todosRouter.delete('/:id', (req, res) => {
   const todoId = req.params.id;
 

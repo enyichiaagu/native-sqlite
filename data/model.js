@@ -1,5 +1,4 @@
 import { DatabaseSync } from 'node:sqlite';
-import { nanoid } from 'nanoid';
 
 const database = new DatabaseSync(`${import.meta.dirname}/main.db`);
 

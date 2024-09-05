@@ -11,4 +11,4 @@ app.use(express.json());
 app.use('/api/users', usersRouter);
 app.use('/api/todos', todosRouter);
 
-app.listen(PORT, () => console.log('Listening'));
+app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
